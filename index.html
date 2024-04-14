@@ -1,0 +1,81 @@
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <main>
+        <div id="controles">
+            <h3>Controles:</h3>
+            <div class="form-control">
+
+                <div class="input-range">
+                    <label for="iHorizontal">Horizontal</label>
+                    <input type="range" name="nmHorizontal" id="iHorizontal" min="-100" max="100" value="10">
+                </div>
+
+                <div class="container-reference">
+                    <input type="number" id="horizontal-ref">
+                    <p>px</p>
+                </div>
+            </div>
+
+            <div class="form-control">
+                <div class="input-range">
+                    <label for="iVertical">Vertical</label>
+                    <input type="range" name="nmVertical" id="iVertical" min="-100" max="100" value="10">
+                </div>
+
+                <div class="container-reference">
+                    <input type="number" id="vertical-ref">
+                    <p>px</p>
+                </div>
+            </div>
+
+            <div class="form-control">
+                <div class="input-range">
+                    <label for="iblur">blur</label>
+                    <input type="range" name="nmblur" id="iblur" min="0" max="100" value="10">
+
+                </div>
+
+                <div class="container-reference">
+                    <input type="number" id="blur-ref">
+                    <p>px</p>
+                </div>
+            </div>
+
+            <div class="form-control">
+                <div class="input-range">
+                    <label for="iSpread">spread</label>
+                    <input type="range" name="nmSpread" id="iSpread" min="-100" max="100" value="10">
+                </div>
+
+                <div class="container-reference">
+                    <input type="number" id="spread-ref">
+                    <p>px</p>
+                </div>
+            </div>
+        </div>
+        <div id="container-preview-rules">
+            <div id="box">
+            </div>
+
+            <div id="container-rules">
+                <p id="rule">box-shadow: <span></span></p>
+                <p id="webkit-rule">-webkit-box-shadow: <span></span></p>
+                <p id="moz-rule">-moz-box-shadow: <span></span></p>
+            </div>
+        </div>
+
+    </main>
+
+
+</body>
+
+</html>
