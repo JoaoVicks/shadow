@@ -1,81 +1,88 @@
+<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shadow Box</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     <script src="script.js" defer></script>
-    <title>Document</title>
 </head>
 
 <body>
-    <main>
-        <div id="controles">
-            <h3>Controles:</h3>
-            <div class="form-control">
+    <div id="container-principal">
+        <div class="container-controls">
+            <h2>Ajustes</h2>
+            <div class="container-control">
+                <div class="container-input">
 
-                <div class="input-range">
-                    <label for="iHorizontal">Horizontal</label>
-                    <input type="range" name="nmHorizontal" id="iHorizontal" min="-100" max="100" value="10">
+                    <label for="iHorizontal">Deslocamento horizontal:</label>
+                    <input type="range" name="nmHorizontal" id="iHorizontal" min="0" max="100">
+
                 </div>
-
-                <div class="container-reference">
-                    <input type="number" id="horizontal-ref">
+                <div class="visualizacao">
+                    <input type="number" id="visualizacao-horizontal">
                     <p>px</p>
                 </div>
             </div>
 
-            <div class="form-control">
-                <div class="input-range">
-                    <label for="iVertical">Vertical</label>
-                    <input type="range" name="nmVertical" id="iVertical" min="-100" max="100" value="10">
-                </div>
+            <div class="container-control">
+                <div class="container-input">
 
-                <div class="container-reference">
-                    <input type="number" id="vertical-ref">
+                    <label for="iVertical">Deslocamento Vertical:</label>
+                    <input type="range" min="0" max="100" name="nmVertical" id="iVertical">
+
+                </div>
+                <div class="visualizacao">
+                    <input type="number" id="visualizacao-vertical">
                     <p>px</p>
                 </div>
             </div>
 
-            <div class="form-control">
-                <div class="input-range">
-                    <label for="iblur">blur</label>
-                    <input type="range" name="nmblur" id="iblur" min="0" max="100" value="10">
+            <div class="container-control">
+                <div class="container-input">
+
+                    <label for="iBlur">intensidade do borrão (Blur)</label>
+                    <input type="range" min="0" max="100" name="nmBlur" id="iBlur">
 
                 </div>
-
-                <div class="container-reference">
-                    <input type="number" id="blur-ref">
+                <div class="visualizacao">
+                    <input type="number" id="visualizacao-blur">
                     <p>px</p>
                 </div>
             </div>
 
-            <div class="form-control">
-                <div class="input-range">
-                    <label for="iSpread">spread</label>
-                    <input type="range" name="nmSpread" id="iSpread" min="-100" max="100" value="10">
-                </div>
+            <div class="container-control">
+                <div class="container-input">
 
-                <div class="container-reference">
-                    <input type="number" id="spread-ref">
+                    <label for="iSpread">Intensidade do espelhamento (Spread)</label>
+                    <input type="range" min="0" max="100" name="nmSpread" id="iSpread">
+
+                </div>
+                <div class="visualizacao">
+                    <input type="number" id="visualizacao-spread">
                     <p>px</p>
                 </div>
+            </div>
+
+        </div>
+        <div class="container-box">
+            
+            <div class="box">
+
+            </div>
+            <div class="container-rules">
+                <p id="box-shadow">box-shadow: <span></span>;</p>
+                <p id="-webkit-box-shadow">-webkit-box-shadow: <span></span>;</p>
+                <p id="-ms-box-shadow">-ms-box-shadow: <span></span>;</p>
             </div>
         </div>
-        <div id="container-preview-rules">
-            <div id="box">
-            </div>
 
-            <div id="container-rules">
-                <p id="rule">box-shadow: <span></span></p>
-                <p id="webkit-rule">-webkit-box-shadow: <span></span></p>
-                <p id="moz-rule">-moz-box-shadow: <span></span></p>
-            </div>
-        </div>
-
-    </main>
-
-
+    </div>
+    
 </body>
 
 </html>
