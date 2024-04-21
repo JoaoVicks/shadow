@@ -9,6 +9,7 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 input[type='number']::-webkit-inner-spin-button{
     appearance: none;
@@ -24,7 +25,12 @@ input[type='number']::-webkit-inner-spin-button{
     padding: 2rem;
 }
 /* controles----------------------------------- */
+.container-controls{
+    display: flex;
+    flex-direction: column;
+}
 .container-controls h2{
+    
     text-align: center;
     margin-bottom: 1.5rem;
     font-weight: 600;
@@ -32,7 +38,7 @@ input[type='number']::-webkit-inner-spin-button{
 
 .container-control{
     display: flex;
-    border-top: 1px solid #9bf011;
+    border-top: 1px solid #d1d1d1;
     padding: 1rem 0rem;
     gap: 1rem;
     
@@ -65,7 +71,6 @@ input[type='range']{
     margin-top: 0.7rem;
     
     
-    
 }
 input[type='range']::-webkit-slider-thumb{
     appearance: none;
@@ -76,25 +81,36 @@ input[type='range']::-webkit-slider-thumb{
     height: 20px;
 }
 /* container-visualização----------------------------------- */
-
+.container-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+    
 .container-box h2{
     text-align: center;
     margin-bottom: 2rem;
+    
 }
 .box{
     width:80%;
-    position:abs;
+ 
     height: 200px;
     background-color: rgb(155, 240, 17);
     border-radius: 0.6rem;
     margin-bottom:1rem;
-    margin:0 auto;
+    
+    box-shadow: #000000 50px 50px 50px 50px;
+-webkit-box-shadow: #000000 50px 50px 50px 50px;
+-ms-box-shadow: #000000 50px 50px 50px 50px;
 }
 .container-rules{
     width: 100%;
     margin-top: 8rem;
     padding: 1rem;
-    border: 2px solid rgb(155, 240, 17);
+    border: 2px solid #d1d1d1;
+    background-color: #fff;
     border-radius: 0.6rem;
     
 }
@@ -108,4 +124,29 @@ input[type='range']::-webkit-slider-thumb{
     height: 35px;
     text-align: center;
     padding: 0.8rem;
+}
+
+
+
+@media(max-width: 425px){
+    body{
+        overflow-x: hidden;
+    }
+  #container-principal{
+        flex-direction: column;
+    }
+    .container-controls,
+.container-box{
+    flex: 1;
+    padding: 1rem 2rem;
+}
+    .container-control{
+        padding: 0.7rem auto;
+    }
+  
+    .container-rules{
+    margin: 4rem;
+
+    }
+
 }

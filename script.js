@@ -27,7 +27,9 @@ const visuColorBox = document.querySelector('#visualizacao-colorBox')
 
 const inputsColor = document.querySelectorAll(`input[type="color"]`)
 
+const visusInputsRange = document.querySelectorAll(`input[type="number"]`)
 
+const visusInputsColor = document.querySelectorAll(`input[type="text"]`)
 // -------------------------------------------------//
 class BoxShadow {
     constructor(inputHorizontal, visuHorizontal, inputVertical, visuVertical, inputBlur, visuBlur, inputSpread, visuSpread, inputColorBox, visuColorBox, inputColorShadow, visuColorShadow) {
@@ -49,15 +51,15 @@ class BoxShadow {
             this.inputColorBox = inputColorBox,
             this.visuColorBox = visuColorBox
     }
-    inicializacao() {
 
+    inicializacao() {
         this.visuHorizontal.value = this.inputHorizontal.value
         this.visuVertical.value = this.inputVertical.value
         this.visuBlur.value = this.inputBlur.value
         this.visuSpread.value = this.inputSpread.value
     }
 
-    Atualizacao(nmInput, nmInputColor = false) {
+    Atualizacao(nmInput,idInputVisu = false) {
 
         if (nmInput !== false) {
 
@@ -74,12 +76,6 @@ class BoxShadow {
                 case 'nmSpread':
                     this.visuSpread.value = this.inputSpread.value
                     break
-
-            }
-        }
-
-        if (nmInputColor !== false) {
-            switch (nmInputColor) {
                 case 'nmColorShadow':
                     this.visuColorShadow.value = this.inputColorShadow.value
                     break
@@ -90,14 +86,70 @@ class BoxShadow {
             }
         }
 
+      
 
+        if (idInputVisu !== false) {
+            switch (idInputVisu) {
+                case 'visualizacao-horizontal':
+
+                    this.inputHorizontal.value = this.visuHorizontal.value
+                    this.targetInputRange(this.inputHorizontal.value, this.inputHorizontal)
+                    break
+
+                case 'visualizacao-vertical':
+                    this.inputVertical.value = this.visuVertical.value
+                    this.targetInputRange(this.inputVertical.value, this.inputVertical)
+                    break
+
+                case 'visualizacao-blur':
+                    this.inputBlur.value = this.visuBlur.value
+                    this.targetInputRange(this.inputBlur.value, this.inputBlur)
+                    break
+
+                case 'visualizacao-spread':
+                    this.inputSpread.value = this.visuSpread.value
+                    
+                    this.targetInputRange(this.inputSpread.value, this.inputSpread)
+                    break
+                
+                case 'visualizacao-colorShadow':
+
+                    let valorVisuColorShadowUpdate
+                    const valorVisuColorShadow = this.visuColorShadow.value;
+
+                    if (valorVisuColorShadow.includes('#')) {
+                        valorVisuColorShadowUpdate = valorVisuColorShadow.replace('#', '');
+                    }
+
+                    valorVisuColorShadowUpdate = valorVisuColorShadowUpdate.padStart(6,'0')
+                    valorVisuColorShadowUpdate = '#'+valorVisuColorShadowUpdate
+                    
+
+                    this.inputColorShadow.value = valorVisuColorShadowUpdate;
+
+                    break
+                case 'visualizacao-colorBox':
+
+                    let valorVisuColorBoxUpdate
+                    const valorVisuColorBox = this.visuColorBox.value;
+
+                    if (valorVisuColorBox.includes('#')) {
+                        valorVisuColorBoxUpdate = valorVisuColorBox.replace('#', '');
+                    }
+                    valorVisuColorBoxUpdate = valorVisuColorBoxUpdate.padStart(6,'0')
+                    valorVisuColorBoxUpdate = '#'+valorVisuColorBoxUpdate
+                    
+
+                    this.inputColorBox.value = valorVisuColorBoxUpdate
+                    break
+            }
+        }
 
         this.AtualizacaoRules()
     }
 
-    targetInputRange(e, input) {
-
-        const valor = e.target.value
+    targetInputRange(valor, input) {
+        
         input.style.background = `linear-gradient(to right,
             #9bf011 0%, #82CFD0 ${valor}%,
             #fff ${valor}%, #fff 100%)`;
@@ -119,10 +171,9 @@ class BoxShadow {
         spanWebkitBoxShadow.innerText = `${colorShadow} ${horizontal}px ${vertical}px ${blur}px ${spread}px`
         spanMsBoxShadow.innerText = `${colorShadow} ${horizontal}px ${vertical}px ${blur}px ${spread}px`
 
-
     }
 }
-// Criação do objeto derivado da classe BoxShadow --------------------------------------------------------
+// Criação do objeto derivado da classe BoxShadow  --------------------------------------------------------
 
 const box = new BoxShadow(
     inputHorizontal,
@@ -143,27 +194,32 @@ box.inicializacao()
 
 // Eventos ------------------------------------------//
 inputsRange.forEach((input) => {
-
     input.addEventListener('input', (e) => {
-
-        box.targetInputRange(e, input)
+        const valor = e.target.value
+        box.targetInputRange(valor, input)
         box.Atualizacao(input.name)
 
     })
-
 })
+
 inputsColor.forEach((inputColor) => {
 
     inputColor.addEventListener('input', (e) => {
-
+    
         box.Atualizacao(false, inputColor.name);
     });
-    // Aqui estava faltando um parêntese para fechar a função de callback
 
-}
+})
 
-)
+visusInputsRange.forEach((visuRange) => {
+    visuRange.addEventListener('input', (e) => {
+        
+        box.Atualizacao(false,visuRange.id)
+    })
+})
 
-
-
-
+visusInputsColor.forEach((visuInputColor)=>{
+    visuInputColor.addEventListener('input',()=>{
+        box.Atualizacao(false,visuInputColor.id)
+    })
+})
